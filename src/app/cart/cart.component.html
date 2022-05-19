@@ -1,0 +1,40 @@
+<div class="container">
+  <div id="cabecera" class="row">
+    <div class="col-md-3">
+      <h1 id="videojuego">Mis compras</h1>
+    </div>
+    <div class="col-md-4">
+        <img class="logo" src="../../assets/javi.png" routerLink="/main">
+    </div>
+    <div class="col-md-1">
+      <button id="boton">
+        <img class="imagen" src="../../assets/user_icon_143482.png" routerLink="/perfil">
+      </button>
+    </div>
+    <div class="col-md-2">
+      <button id="boton">
+        <img id="imagen" src="../../assets/WART07012022154532-removebg-preview.png" (click)="goToCart()">
+      </button>
+    </div>
+  </div>
+  <div class="container-products">
+    <div class="product" *ngFor="let product of products$ | async">
+      <p>Nombre : {{product.name}}</p>
+      <p>Precio : {{product.price}}</p>
+      <p>Descripción : {{product.description}}</p>
+      <img src="http://localhost:8080/product/upload/img/{{product.foto}}">
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-success" (click)="comprar(product)">COMPRAR</button>
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-danger" (click)="deleteFromCart(product)">ELIMINAR</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-info" routerLink="/login" (click)="cerrarSesion()">CERRAR SESIÓN</button>
+  </div>
+  <div class="counter">Counter : {{countProducts$ | async}}</div>
+  <div class="total-price">Total Price : {{totalPrice$ | async | number : '1.2-2'}}</div>
+</div>
+

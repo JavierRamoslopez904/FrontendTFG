@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Oswald&display=swap');
+
+.login-page {
+  width: 50%;
+  margin-top: 150px;
+  margin-left: 350px;
+  background-color:aqua;
+}
+
+.login-form {
+  box-shadow: 0 0 27px 0 rgba(84, 84, 84, 0.62);
+}
+
+.login-form-header {
+  font-size: 60px;
+  padding-top: 16px;
+  font-family: 'Fredoka One', cursive;
+}
+
+.login-from-row {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+#input{
+  width: 250px;
+}
+
+#registrar{
+  width: 250px;
+  border-radius: 20px;
+  background-color: gold;
+  font-family: 'Fredoka One', cursive;
+}
+
+#registro{
+  font-size: 20px;
+  font-family: 'Fredoka One', cursive;
+}
+
+#cuenta{
+  font-size: 20px;
+  font-family: 'Fredoka One', cursive;
+}
+
+#frase{
+  font-size: 20px;
+  font-family: 'Fredoka One', cursive;
+}
+
+#frase:hover{
+  color: #e30052;
+}

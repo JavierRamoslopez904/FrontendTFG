@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row text-center login-page">
+    <div class="col-md-12 login-form">
+      <form #loginForm="ngForm">
+        <div class="row">
+          <div class="col-md-12 login-form-header">
+            <p class="login-form-front-header">Javi's Videogames</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 login-from-row">
+            <input id="input" name="email" type="text" placeholder="email" [(ngModel)]="user.email" required="true" #email="ngModel">
+            <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div>
+                El email es requerido
+              </div>
+              <div *ngIf="email.errors.email">
+                El email tiene que tener un formato correcto
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 login-from-row">
+            <input id="input" name="pass" type="password" placeholder="password" [(ngModel)]="user.password" required="true" #password="ngModel">
+            <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+              <div id="">
+                La contraseña es requerida
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 login-from-row">
+            <button id="logear" (click)="logearUsuario()" [disabled]="!loginForm.form.valid">Entrar</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 login-from-row">
+            <span id="cuenta">¿ No tienes cuenta ?</span>
+          </div>
+          <div class="col-md-6 login-from-row">
+            <span id="frase" routerLink="/register">Registrate aquí</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

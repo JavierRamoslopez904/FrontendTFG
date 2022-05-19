@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row text-center login-page">
+    <div class="col-md-12 login-form">
+      <form #registerForm="ngForm">
+        <div class="row">
+          <div class="col-md-12 login-form-header">
+            <p class="login-form-front-header">Javi's Videogames</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 login-from-row">
+            <input id="input" name="username" type="text" placeholder="username" [(ngModel)]="user.username" required="true" #username="ngModel">
+            <div class="alert alert-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+              <div>
+                El username es requerido
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 login-from-row">
+            <input id="input" name="email" type="email" placeholder="email" [(ngModel)]="user.email" required="true" #email="ngModel">
+            <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div>
+                El email es requerido
+              </div>
+              <div *ngIf="email.errors.email">
+                El email tiene que tener un formato correcto
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 login-from-row">
+            <input id="input" name="password" type="password" placeholder="password" [(ngModel)]="user.password" required="true" #password="ngModel">
+            <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+              <div>
+                La contraseña es requerida
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 login-from-row">
+            <button id="registrar" (click)="registrarUsuario()" [disabled]="!registerForm.form.valid">Entrar</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 login-from-row">
+            <span id="cuenta">¿ Ya tienes una cuenta ?</span>
+          </div>
+          <div class="col-md-6 login-from-row">
+            <span id="frase" routerLink="/login">Logeate aquí</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
