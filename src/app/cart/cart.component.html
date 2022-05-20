@@ -18,11 +18,11 @@
     </div>
   </div>
   <div class="container-products">
-    <div class="product" *ngFor="let product of products$ | async">
-      <p>Nombre : {{product.name}}</p>
-      <p>Precio : {{product.price}}</p>
-      <p>Descripción : {{product.description}}</p>
-      <img src="http://localhost:8080/product/upload/img/{{product.foto}}">
+    <div class="product" *ngFor="let product of(cartProducts$ | async)">
+      <p>Nombre : {{product.product.name}}</p>
+      <p>Precio : {{product.product.price}}</p>
+      <p>Descripción : {{product.product.description}}</p>
+      <p>Count : {{product.count}}</p>
       <div class="row">
         <div class="col-md-6">
           <button class="btn btn-success" (click)="comprar(product)">COMPRAR</button>
@@ -30,11 +30,13 @@
         <div class="col-md-6">
           <button class="btn btn-danger" (click)="deleteFromCart(product)">ELIMINAR</button>
         </div>
+        <button (click)="aniadir(product)">MORE</button>
+        <button (click)="quitar(product)">LESS</button>
       </div>
     </div>
     <button class="btn btn-info" routerLink="/login" (click)="cerrarSesion()">CERRAR SESIÓN</button>
   </div>
-  <div class="counter">Counter : {{countProducts$ | async}}</div>
-  <div class="total-price">Total Price : {{totalPrice$ | async | number : '1.2-2'}}</div>
+  <div class="counter">Counter: {{ countProducts$ | async }}</div>
+  <div class="total-price">Total Price: {{ totalPrice$ | async | number : '1.2-2'}}</div>
 </div>
 

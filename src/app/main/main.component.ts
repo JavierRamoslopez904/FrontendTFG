@@ -19,7 +19,7 @@ export class MainComponent implements OnInit {
 
   products : Product[] = [];
 
-  constructor(private productService : ProductService, private route : Router, private store : Store<AppState>, private modalService : ModalService) { }
+  constructor(private productService : ProductService, private route : Router, private store : Store, private modalService : ModalService) { }
 
   ngOnInit(): void {
 
@@ -42,7 +42,7 @@ export class MainComponent implements OnInit {
     this.route.navigate(['/cart']);
   }
 
-  addToCart(product){
+  addToCart(product : Product){
     Swal.fire({
       title: 'Producto correctamente añadido',
       showClass: {
@@ -52,8 +52,8 @@ export class MainComponent implements OnInit {
         popup: 'animate__animated animate__fadeOutUp'
       }
     })
+    this.store.dispatch(CartActions.addProduct(product))
     console.log(product.id);
-    this.store.dispatch(new CartActions.AddProductCartAction(product));
   }
 
   cerrarSesion(product){

@@ -1,7 +1,11 @@
 import { Action, createAction, props } from "@ngrx/store";
 import { Product } from "src/app/classes/product";
 
-export enum CartActionsType{
+export const addProduct = createAction('Add Product', props<Product>());
+export const removeProduct = createAction('Remove Product', props<Product>());
+export const clearCart = createAction('Clear Cart');
+
+/**export enum CartActionsType{
   ADD_PRODUCT_CART = 'ADD PRODUCT',
   REMOVE_PRODUCT = 'REMOVE PRODUCT',
   REMOVE_ALL_PRODUCTS = 'REMOVE ALL PRODUCTS'
@@ -32,4 +36,4 @@ export type CartActions = AddProductCartAction | RemoveProductCartAction | Remov
 export function addProduct(product: any): any {
   throw new Error('Function not implemented.');
 }
-
+**/

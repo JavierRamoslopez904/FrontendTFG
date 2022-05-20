@@ -7,7 +7,7 @@ import { AppState } from '../store/app.state';
 import * as CartActions from '../store/action/cartActions';
 import Swal from 'sweetalert2';
 import { User } from '../classes/user';
-import { selectCountProducts, selectTotalPrice } from '../store/selector/cartSelector';
+import { ProductGroup, selectCountProducts, selectGroupedCartEntries, selectTotalPrice } from '../store/selector/cartSelector';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -15,20 +15,17 @@ import { selectCountProducts, selectTotalPrice } from '../store/selector/cartSel
 })
 export class CartComponent implements OnInit {
 
-  location : Location;
-
-  user : User = new User();
-  products$!: Observable<Array<Product>>;
-  countProducts$: Observable<number>;
-  totalPrice$: Observable<number>;
+  cartProducts$ : Observable<ProductGroup[]>;
+  countProducts$ : Observable<number>;
+  totalPrice$ : Observable<number>;
 
   constructor(private route : Router, private store : Store<AppState>) {
+    this.cartProducts$ = store.select(selectGroupedCartEntries);
     this.countProducts$ = store.select(selectCountProducts);
-    this.totalPrice$ = store.select(selectTotalPrice)
+    this.totalPrice$ = store.select(selectTotalPrice);
   }
 
   ngOnInit(): void {
-    this.products$ = this.store.select(store => store.cartProducts)
   }
 
   goToShop(){
@@ -36,7 +33,7 @@ export class CartComponent implements OnInit {
   }
 
   deleteFromCart(product){
-    this.store.dispatch(new CartActions.RemoveProductCartAction(product));
+    //this.store.dispatch(new CartActions.RemoveProductCartAction(product));
   }
 
   goToCart(){
@@ -76,7 +73,7 @@ export class CartComponent implements OnInit {
     this.store.dispatch(CartActions.addProduct(entry.product));
   }
 
-  quitar(){
-
+  quitar(entry : any){
+    this.store.dispatch(CartActions.removeProduct(entry.product));
   }
 }
