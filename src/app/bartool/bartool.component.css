@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Oswald&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Fredoka+One&family=Odibee+Sans&family=Oswald&display=swap');
 
-#javi{
-  padding-top: 30px;
-  font-family: 'Fredoka One', cursive;
-}
 
 #boton{
   padding-top: 4px;
@@ -13,18 +9,6 @@
   outline: none;
   margin-left: 250px;
   font-family: 'Fredoka One', cursive;
-}
-
-#videojuego{
-  padding-top: 5px;
-  margin-left: 100px;
-  margin-top: 15px;
-  font-family: 'Fredoka One', cursive;
-}
-
-
-#videojuego:hover{
-  color: gold;
 }
 
 .imagen{
@@ -66,18 +50,8 @@
   background-size: cover;
 }
 
-#name{
+.counter{
+  margin-left: 1170px;
+  margin-top: -50px;
   font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-}
-
-#aniadir{
-  font-weight: bold;
-  color: blue;
-}
-
-.boton{
-  border-radius: 10px;
-  margin-top: 20px;
 }

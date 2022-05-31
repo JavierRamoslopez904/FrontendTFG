@@ -59,11 +59,31 @@
 #bienvenida{
   text-align: center;
   font-size: 50px;
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Oswald', sans-serif;
 }
 
 #user{
   width: 300px;
   height: 300px;
   text-align: center;
+}
+
+.email{
+  font-weight: bold;
+  font-size: 40px;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+}
+
+.password{
+  font-weight: bold;
+  font-size: 40px;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+}
+
+.hueco1{
+  font-size: 20px;
+  font-weight: 100;
+  color: cadetblue;
 }

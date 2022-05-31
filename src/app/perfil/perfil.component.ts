@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
 import { User } from '../classes/user';
 import { LoginServiceService } from '../services/login-service.service';
 import { UserServiceService } from '../services/user-service.service';
+import { AppState } from '../store/app.state';
+import { selectCountProducts } from '../store/selector/cartSelector';
 
 @Component({
   selector: 'app-perfil',
@@ -14,7 +17,7 @@ export class PerfilComponent implements OnInit {
 
   user : User;
 
-  constructor(private loginService : LoginServiceService, private route : Router, private userService : UserServiceService) {
+  constructor(private loginService : LoginServiceService, private route : Router, private store : Store<AppState>) {
     this.user = this.loginService.userValue;
   }
 

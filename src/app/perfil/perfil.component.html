@@ -1,22 +1,5 @@
 <div class="container">
-  <div id="cabecera" class="row">
-    <div class="col-md-3">
-      <h1 id="videojuego">Mis compras</h1>
-    </div>
-    <div class="col-md-4">
-        <img class="logo" src="../../assets/javi.png" routerLink="/main">
-    </div>
-    <div class="col-md-1">
-      <button id="boton">
-        <img class="imagen" src="../../assets/user_icon_143482.png" routerLink="/perfil">
-      </button>
-    </div>
-    <div class="col-md-2">
-      <button id="boton">
-        <img id="imagen" src="../../assets/WART07012022154532-removebg-preview.png" (click)="goToCart()">
-      </button>
-    </div>
-  </div>
+  <app-bartool></app-bartool>
   <div class="row">
     <p id="bienvenida">BIENVENIDO A JAVI'S VIDEOGAMES</p>
   </div>
@@ -27,18 +10,14 @@
     <div class="col-md-9">
       <ul class="list-group-m3">
         <li class="list-group-item">
-          <p>EMAIL : {{user.email}}</p>
-          <p>PASSWORD : {{user.password}}</p>
+          <p class="email">EMAIL : <span class="hueco1">{{user.email}}</span></p>
+          <p class="password">PASSWORD : <span class="hueco1">{{user.password}}</span></p>
+          <button class="btn btn-danger" (click)="cerrarSesion()">CERRAR SESIÓN</button>
         </li>
       </ul>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <button class="btn btn-danger" routerLink="/compra">MIS COMPRAS</button>
-    </div>
-  </div>
-  <button (click)="cerrarSesion()">CERRAR SESIÓN</button>
+  <app-footer></app-footer>
 </div>
 
 

@@ -7,6 +7,8 @@ import { AppState } from '../store/app.state';
 import * as CartActions from '../store/action/cartActions';
 import Swal from 'sweetalert2';
 import { ModalService } from '../detalle/modal-service';
+import { Observable } from 'rxjs';
+import { ProductGroup, selectCountProducts, selectGroupedCartEntries, selectTotalPrice } from '../store/selector/cartSelector';
 
 @Component({
   selector: 'app-main',
@@ -19,10 +21,10 @@ export class MainComponent implements OnInit {
 
   products : Product[] = [];
 
-  constructor(private productService : ProductService, private route : Router, private store : Store, private modalService : ModalService) { }
+  constructor(private productService : ProductService, private route : Router, private store : Store, private modalService : ModalService) {
+   }
 
   ngOnInit(): void {
-
     this.getAllVideogames();
   }
 
@@ -38,21 +40,29 @@ export class MainComponent implements OnInit {
     )
   }
 
-  goToCart(){
-    this.route.navigate(['/cart']);
-  }
-
   addToCart(product : Product){
-    Swal.fire({
-      title: 'Producto correctamente añadido',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
-    })
-    this.store.dispatch(CartActions.addProduct(product))
+    let timerInterval
+      Swal.fire({
+      title: 'Añadiendo al carrito de la compra',
+      html: 'Revise su carrito cuando acabe el proceso',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+      }, 30)
+      this.store.dispatch(CartActions.addProduct(product))
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
     console.log(product.id);
   }
 
@@ -65,6 +75,10 @@ export class MainComponent implements OnInit {
     this.productoSeleccionado = product;
     this.modalService.abrirModal();
     console.log(product.foto);
+  }
+
+  goToPerfil(){
+    this.route.navigate(['/perfil'])
   }
 
 }

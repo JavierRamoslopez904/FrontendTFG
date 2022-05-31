@@ -55,3 +55,53 @@
   height: 100px;
   margin-top: 10px;
 }
+
+.spann{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+
+.add{
+  margin-top: 150px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: none;
+}
+
+.quit{
+  margin-top: 150px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: none;
+}
+
+.buy{
+  width:150px;
+  margin-top: 150px;
+  border-radius: 5px;
+  background-color: lightgreen;
+}
+
+#imagen{
+  margin-left: 300px;
+  width: 400px;
+  height: 400px;
+}
+
+#texto{
+  margin-top: 60px;
+  font-family: 'Oswald', sans-serif;
+}
+
+#botonn{
+  margin-left: 180px;
+  margin-top: 40px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: cadetblue;
+}
+
+#botonn:hover{
+  background-color: lightgreen;
+}

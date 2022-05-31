@@ -1,0 +1,16 @@
+<div id="cabecera" class="row">
+  <div class="col-md-6">
+      <h2 class="titulo" routerLink="/main">Javi's Videogames</h2>
+  </div>
+  <div class="col-md-1">
+    <button id="boton">
+      <img class="imagen" src="../../assets/imagen-removebg-preview.png" (click)="goToPerfil()">
+    </button>
+  </div>
+  <div class="col-md-1">
+    <button id="boton">
+      <img id="imagen" src="../../assets/descarga-removebg-preview.png" (click)="goToCart()">
+    </button>
+  </div>
+  <div class="counter">{{ countProducts$ | async }}</div>
+</div>

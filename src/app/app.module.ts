@@ -12,8 +12,9 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { CartComponent } from './cart/cart.component';
 import { StoreModule } from '@ngrx/store';
 import { cartReducer } from './store/reducer/cartReducer';
-import { ComprasComponent } from './compras/compras.component';
 import { DetalleComponent } from './detalle/detalle.component';
+import { BartoolComponent } from './bartool/bartool.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,8 +23,9 @@ import { DetalleComponent } from './detalle/detalle.component';
     MainComponent,
     PerfilComponent,
     CartComponent,
-    ComprasComponent,
     DetalleComponent,
+    BartoolComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

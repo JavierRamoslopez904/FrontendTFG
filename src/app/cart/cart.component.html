@@ -1,42 +1,49 @@
-<div class="container">
-  <div id="cabecera" class="row">
-    <div class="col-md-3">
-      <h1 id="videojuego">Mis compras</h1>
-    </div>
-    <div class="col-md-4">
-        <img class="logo" src="../../assets/javi.png" routerLink="/main">
-    </div>
-    <div class="col-md-1">
-      <button id="boton">
-        <img class="imagen" src="../../assets/user_icon_143482.png" routerLink="/perfil">
-      </button>
-    </div>
-    <div class="col-md-2">
-      <button id="boton">
-        <img id="imagen" src="../../assets/WART07012022154532-removebg-preview.png" (click)="goToCart()">
-      </button>
-    </div>
-  </div>
-  <div class="container-products">
-    <div class="product" *ngFor="let product of(cartProducts$ | async)">
-      <p>Nombre : {{product.product.name}}</p>
-      <p>Precio : {{product.product.price}}</p>
-      <p>Descripción : {{product.product.description}}</p>
-      <p>Count : {{product.count}}</p>
+<div *ngIf="(cartProducts$ | async)?.length === 0">
+  <div class="container">
+    <app-bartool></app-bartool>
       <div class="row">
-        <div class="col-md-6">
-          <button class="btn btn-success" (click)="comprar(product)">COMPRAR</button>
+        <div class="col-md-7">
+          <img id="imagen" src="../../assets/png-transparent-shopping-bags-trolleys-shopping-cart-empty-cart-text-logo-shopping-bags-trolleys-removebg-preview.png">
         </div>
-        <div class="col-md-6">
-          <button class="btn btn-danger" (click)="deleteFromCart(product)">ELIMINAR</button>
+        <div class="col-md-5">
+          <h3 id="texto">SU CARRITO DE LA COMPRA SE ENCUENTRA VACÍO</h3>
+          <button id="botonn" (click)="goToMain()"><img src="../../assets/add-removebg-preview.png" width="100"></button>
         </div>
-        <button (click)="aniadir(product)">MORE</button>
-        <button (click)="quitar(product)">LESS</button>
       </div>
-    </div>
-    <button class="btn btn-info" routerLink="/login" (click)="cerrarSesion()">CERRAR SESIÓN</button>
+    <app-footer></app-footer>
   </div>
-  <div class="counter">Counter: {{ countProducts$ | async }}</div>
-  <div class="total-price">Total Price: {{ totalPrice$ | async | number : '1.2-2'}}</div>
 </div>
+<div *ngIf="(cartProducts$ | async)?.length !== 0">
+  <div class="container">
+    <app-bartool></app-bartool>
+    <div>
+      <div *ngFor="let product of(cartProducts$ | async)">
+        <div class="row">
+          <div class="col-md-1">
+            <button class="add" (click)="aniadir(product)"><img src="../../assets/descarga__2_-removebg-preview.png" width="50"></button>
+          </div>
+          <div class="col-md-4">
+            <img *ngIf="product.product?.foto"
+                    src="http://localhost:8080/product/upload/img/{{product.product.foto}}" class="img-thumbnail rounded"
+                    style="width: 600px; height: 400px;cursor:pointer;">
 
+                  <img *ngIf="!product.product?.foto"
+                  src="http://localhost:8080/images/cruz.jpg"
+                  style="width: 350px; cursor:pointer;">
+          </div>
+          <div class="col-md-1">
+            <button class="quit" (click)="quitar(product)"><img src="../../assets/kisspng-button-delete-key-icon-warning-icons-5aa8e9e12341a4.7815999315210193611444-removebg-preview.png" width="50"></button>
+          </div>
+          <div class="col-md-6">
+            <h4>Nombre : <span class="spann">{{product.product.name}}</span></h4>
+            <h4>Precio : <span class="spann">{{product.product.price}}</span></h4>
+            <h4>Descripción : <span class="spann">{{product.product.description}}</span></h4>
+            <h4>Unidades : <span class="spann">{{product.count}}</span></h4>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-success" (click)="limpiarCarrito()">COMPRAR</button>
+      <div class="total-price">Precio Total: {{ totalPrice$ | async | number : '1.2-2'}}€</div>
+      <app-footer></app-footer>
+  </div>
+</div>

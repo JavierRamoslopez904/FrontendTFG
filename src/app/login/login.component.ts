@@ -23,5 +23,4 @@ export class LoginComponent implements OnInit {
   logearUsuario(){
     this.loginService.logearUsuario(this.user);
   }
-
 }

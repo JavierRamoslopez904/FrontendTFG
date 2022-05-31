@@ -1,44 +1,28 @@
 <div class="container">
-  <div id="cabecera" class="row">
-    <div class="col-md-3">
-      <h1 id="videojuego">Mis compras</h1>
-    </div>
-    <div class="col-md-4">
-        <img class="logo" src="../../assets/javi.png" routerLink="/main">
-    </div>
-    <div class="col-md-1">
-      <button id="boton">
-        <img class="imagen" src="../../assets/user_icon_143482.png" routerLink="/perfil">
-      </button>
-    </div>
-    <div class="col-md-2">
-      <button id="boton">
-        <img id="imagen" src="../../assets/WART07012022154532-removebg-preview.png" (click)="goToCart()">
-      </button>
-    </div>
+  <app-bartool></app-bartool>
   <app-detalle *ngIf="productoSeleccionado" [product]="productoSeleccionado"></app-detalle>
-  </div>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <th>FOTO</th>
-      <th>NAME</th>
-      <th>PRICE</th>
-      <th>DESCRIPTION</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of products">
-        <td><img (click)="abrirModal(product)" *ngIf="product?.foto"
-          src="http://localhost:8080/product/upload/img/{{product.foto}}" class="img-thumbnail rounded"
-          style="width: 200px; cursor:pointer;">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <th>FOTO</th>
+        <th>NAME</th>
+        <th>PRICE</th>
+        <th>DESCRIPTION</th>
+      </thead>
+      <tbody>
+          <tr *ngFor="let product of products">
+              <td><img (click)="abrirModal(product)" *ngIf="product?.foto"
+                src="http://localhost:8080/product/upload/img/{{product.foto}}" class="img-thumbnail rounded"
+                style="width: 250px; cursor:pointer;">
 
-        <img (click)="abrirModal(product)" *ngIf="!product?.foto"
-        src="http://localhost:8080/images/nouser.png" class="img-thumbnail rounded"
-        style="width: 200px; cursor:pointer;"></td>
-        <td>{{product.name}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.description}}</td>
-        <button class="btn-info" (click)="addToCart(product)">AÑADIR</button>
-      </tr>
-    </tbody>
-  </table>
-</div>
+              <img (click)="abrirModal(product)" *ngIf="!product?.foto"
+              src="http://localhost:8080/images/cruz.jpg" class="img-thumbnail rounded"
+              style="width: 250px; cursor:pointer;"></td>
+            <td id="name">{{product.name}}</td>
+            <td id="price">{{product.price}}</td>
+            <td id="description" >{{product.description}}</td>
+            <button class="boton" (click)="addToCart(product)"><span id="aniadir">AÑADIR</span></button>
+          </tr>
+      </tbody>
+    </table>
+    <app-footer></app-footer>
+  </div>

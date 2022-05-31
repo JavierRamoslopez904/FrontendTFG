@@ -34,9 +34,9 @@ export class LoginServiceService {
         Swal.fire({
           title: 'Bienvenidos a Javis Videogames',
           text: 'Descubre todos nuestros juegos',
-          imageUrl: 'https://www.fotosparafacebook.es/wp-content/uploads/2017/06/gamers-fotosparafacebook.es-6-436x272.jpg',
-          imageWidth: 400,
-          imageHeight: 200,
+          imageUrl: 'https://rtvc-assets-radionica3.s3.amazonaws.com/s3fs-public/senalradionica/articulo-noticia/galeriaimagen/gamers.jpg',
+          imageWidth: 500,
+          imageHeight: 400,
           imageAlt: 'Custom image',
         })
       },

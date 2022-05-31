@@ -18,6 +18,8 @@ export class CartComponent implements OnInit {
   cartProducts$ : Observable<ProductGroup[]>;
   countProducts$ : Observable<number>;
   totalPrice$ : Observable<number>;
+  bandera : boolean;
+  product : ProductGroup;
 
   constructor(private route : Router, private store : Store<AppState>) {
     this.cartProducts$ = store.select(selectGroupedCartEntries);
@@ -32,8 +34,8 @@ export class CartComponent implements OnInit {
     this.route.navigate(['/main'])
   }
 
-  deleteFromCart(product){
-    //this.store.dispatch(new CartActions.RemoveProductCartAction(product));
+  deleteFromCart(entry : any){
+    this.store.dispatch(CartActions.removeProduct(entry.product));
   }
 
   goToCart(){
@@ -64,7 +66,7 @@ export class CartComponent implements OnInit {
         )
       }
     })
-
+    //this.store.dispatch(new CartActions.RemoveProductCartAction(product));
     console.log(product.user.email)
 
   }
@@ -75,5 +77,28 @@ export class CartComponent implements OnInit {
 
   quitar(entry : any){
     this.store.dispatch(CartActions.removeProduct(entry.product));
+  }
+
+  limpiarCarrito(){
+    Swal.fire({
+      title: '¿Quiere realizar su compra de todos los productos?',
+      text: "Asegúrese antes de comprar nuestros productos",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Comprar YA!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Compra realizada con éxito',
+        )
+        this.store.dispatch(CartActions.clearCart())
+      }
+    })
+  }
+
+  goToMain(){
+    this.route.navigate(['/main']);
   }
 }
