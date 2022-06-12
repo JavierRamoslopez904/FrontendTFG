@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Product } from '../classes/product';
-import { AppState } from '../store/app.state';
-import * as CartActions from '../store/action/cartActions';
+import { AppState } from '../../store/app.state';
+import * as CartActions from '../../store/action/cartActions';
 import Swal from 'sweetalert2';
-import { User } from '../classes/user';
-import { ProductGroup, selectCountProducts, selectGroupedCartEntries, selectTotalPrice } from '../store/selector/cartSelector';
+import { ProductGroup, selectCountProducts, selectGroupedCartEntries, selectTotalPrice } from '../../store/selector/cartSelector';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -18,8 +16,6 @@ export class CartComponent implements OnInit {
   cartProducts$ : Observable<ProductGroup[]>;
   countProducts$ : Observable<number>;
   totalPrice$ : Observable<number>;
-  bandera : boolean;
-  product : ProductGroup;
 
   constructor(private route : Router, private store : Store<AppState>) {
     this.cartProducts$ = store.select(selectGroupedCartEntries);
@@ -32,10 +28,6 @@ export class CartComponent implements OnInit {
 
   goToShop(){
     this.route.navigate(['/main'])
-  }
-
-  deleteFromCart(entry : any){
-    this.store.dispatch(CartActions.removeProduct(entry.product));
   }
 
   goToCart(){
@@ -66,8 +58,6 @@ export class CartComponent implements OnInit {
         )
       }
     })
-    //this.store.dispatch(new CartActions.RemoveProductCartAction(product));
-    console.log(product.user.email)
 
   }
 

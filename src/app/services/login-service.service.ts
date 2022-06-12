@@ -86,6 +86,9 @@ export class LoginServiceService {
     )
   }
 
+  /**
+   * Método para obtener el valor del user
+   */
   public get userValue() : User{
     return this.userSubject.value;
   }

@@ -26,14 +26,23 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.urlEndpoint}/getAll`);
   }
 
+  /**
+   * Método para subir una foto
+   *
+   * @param archivo
+   * @param id
+   * @returns
+   */
   subirFoto(archivo : File, id) : Observable<HttpEvent<{}>>{
+    // Creación de una variable de tipo FormData
     let formData = new FormData();
     formData.append("archivo", archivo);
     formData.append("id", id);
 
-    const req = new HttpRequest('POST',`${this.urlEndpoint}/upload`,formData,{
-      reportProgress : true
-    });
+    // Almacenamiento en una variable de la petición al back
+    const req = new HttpRequest('POST',`${this.urlEndpoint}/upload`,formData,{});
+
+    // Se devuelve la petición
     return this.http.request(req);
   }
 }

@@ -74,10 +74,11 @@
 
 #aniadir{
   font-weight: bold;
-  color: blue;
+  color: black;
 }
 
 .boton{
   border-radius: 10px;
   margin-top: 20px;
+  background-color: cadetblue;
 }

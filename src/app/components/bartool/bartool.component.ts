@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppState } from '../store/app.state';
-import { selectCountProducts } from '../store/selector/cartSelector';
+import { AppState } from '../../store/app.state';
+import { selectCountProducts } from '../../store/selector/cartSelector';
 
 @Component({
   selector: 'app-bartool',

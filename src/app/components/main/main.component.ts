@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Product } from '../classes/product';
-import { ProductService } from '../services/product.service';
-import { AppState } from '../store/app.state';
-import * as CartActions from '../store/action/cartActions';
+import { Product } from '../../classes/product';
+import { ProductService } from '../../services/product.service';
+import * as CartActions from '../../store/action/cartActions';
 import Swal from 'sweetalert2';
 import { ModalService } from '../detalle/modal-service';
-import { Observable } from 'rxjs';
-import { ProductGroup, selectCountProducts, selectGroupedCartEntries, selectTotalPrice } from '../store/selector/cartSelector';
 
 @Component({
   selector: 'app-main',
@@ -63,7 +60,6 @@ export class MainComponent implements OnInit {
     console.log('I was closed by the timer')
   }
 })
-    console.log(product.id);
   }
 
   cerrarSesion(product){
@@ -74,7 +70,6 @@ export class MainComponent implements OnInit {
   abrirModal(product : Product){
     this.productoSeleccionado = product;
     this.modalService.abrirModal();
-    console.log(product.foto);
   }
 
   goToPerfil(){

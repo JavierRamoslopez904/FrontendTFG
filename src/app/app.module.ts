@@ -5,16 +5,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { MainComponent } from './main/main.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { CartComponent } from './cart/cart.component';
+import { MainComponent } from './components/main/main.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { CartComponent } from './components/cart/cart.component';
 import { StoreModule } from '@ngrx/store';
 import { cartReducer } from './store/reducer/cartReducer';
-import { DetalleComponent } from './detalle/detalle.component';
-import { BartoolComponent } from './bartool/bartool.component';
-import { FooterComponent } from './footer/footer.component';
+import { DetalleComponent } from './components/detalle/detalle.component';
+import { BartoolComponent } from './components/bartool/bartool.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 @NgModule({
   declarations: [
     AppComponent,

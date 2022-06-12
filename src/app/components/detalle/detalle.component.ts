@@ -1,8 +1,8 @@
 import { HttpEventType } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Product } from '../classes/product';
-import { ProductService } from '../services/product.service';
+import { Product } from '../../classes/product';
+import { ProductService } from '../../services/product.service';
 import { ModalService } from './modal-service';
 
 @Component({
@@ -31,21 +31,22 @@ export class DetalleComponent implements OnInit {
    */
   seleccionarFoto(event){
     this.fotoSeleccionada = event.target.files[0];
-    this.progreso = 0;
-    console.log(this.fotoSeleccionada);
-    if(this.fotoSeleccionada.type.indexOf('image') < 0){
+    if(this.fotoSeleccionada.type.indexOf('image')){
       Swal.fire('Error seleccionar imagen : ','El archivo debe ser de tipo imagen', 'error');
     }
   }
 
+  /**
+   * Método para subir la foto seleccionada anteriormente
+   */
   subirFoto(){
     if(!this.fotoSeleccionada){
       Swal.fire('Error : ', 'Debe seleccionar una foto','error');
     }else{
+      // Llamada al back para obtener los datos
       this.productService.subirFoto(this.fotoSeleccionada, this.product.id).subscribe(event => {
-        if(event.type === HttpEventType.UploadProgress){
-          this.progreso = Math.round((event.loaded/event.total) * 100)
-        }else if(event.type === HttpEventType.Response){
+        // Establecemos condiciones para ver si el tipo del evento es una respuesta
+        if(event.type === HttpEventType.Response){
           let response : any = event.body;
           this.product = response.product as Product;
 
@@ -58,6 +59,9 @@ export class DetalleComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para cerrar el modal
+   */
   cerrarModal(){
     this.modalService.cerrarModal();
     this.fotoSeleccionada = null;

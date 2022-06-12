@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { User } from '../classes/user';
-import { LoginServiceService } from '../services/login-service.service';
-import { UserServiceService } from '../services/user-service.service';
-import { AppState } from '../store/app.state';
-import { selectCountProducts } from '../store/selector/cartSelector';
+import { User } from '../../classes/user';
+import { LoginServiceService } from '../../services/login-service.service';
+import { AppState } from '../../store/app.state';
 
 @Component({
   selector: 'app-perfil',

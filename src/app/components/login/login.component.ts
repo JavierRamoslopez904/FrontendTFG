@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from '../classes/user';
-import { LoginServiceService } from '../services/login-service.service';
-import Swal from 'sweetalert2';
+import { User } from '../../classes/user';
+import { LoginServiceService } from '../../services/login-service.service';
 
 @Component({
   selector: 'app-login',
